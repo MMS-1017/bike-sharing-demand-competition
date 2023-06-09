@@ -20,12 +20,12 @@ The data was nearly uniformly distributed in a monthly fashion through the years
 I followed the notebook suggestion of adding the hour feature to the data which seemed reasonable since it is a more general feature and might give the trained models more intuition to which hours of the day in general might have the largest bike share demand without specifying a certain year, month or day.
  
 ### How much better did your model preform after adding additional features and why do you think that is?
-The best improvement was because of the split of the datetime field into year, month, day, and hour.
-
+The best model's rmse decreased from 53.159983 to 30.279832.1 as a validation score which is a huge improvement also the test error (root mean square logarithmic error rmsle) decreased from 1.79590 to 0.62819 which is also a huge improvement in performance.
+I think that happend because the hour feature gives the trained models better information and intuition about which hours in the day in general the bike share demand increases or decreases without specifying a certain year, month or day and according to the hour feature histogram it seems that the data was recorded nearly equally on all the hours of the day so the hour feature holds useful information.
 
 ## Hyper parameter tuning
 ### How much better did your model preform after trying different hyper parameters?
-It was useful in some cases, but it did not improve model performance by much, some configurations harmed the model performance.
+After performing hyperparameter optimization via a random search method using the data with the added hour feature, the model's training rmse increased from 30.279832 to 36.187504 for the best model. However, the model's test error decreased from 0.0.62819 to 0.48549. This gives an indication that the new model has a bit higher bias, but better variance as it had better generalization for the test data. I think this is because I focused on tree based models with boosting ensemble technique that performed best with the default settings mainly Gradient boosting, CATboost and XGboost during hpo, while before hpo autogluon would try alot more types of models so it might have been slightly overfitting the data.
 
 ### If you were given more time with this dataset, where do you think you would spend more time?
 data analysis in order to get more information about this dataset , and do more research about the hyperparameters.
