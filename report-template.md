@@ -7,12 +7,18 @@
 2- I needed to replace the negative numbers with 0, to be able to submit my results to Kaggle.
 
 ### What was the top ranked model that performed?
-the second run with more features but no tuning og hyperparameters. The score was 0.48549 and was better than the one with the tuning.
+The top ranked model , i.e. the model with the lowest root mean square error (RMSE), was the Weighted_Ensemble_L3 model which is basically a model formed by stacking 3 layers of the previously trained models to achieve the highest possible validation accuracy.
 
 ## Exploratory data analysis and feature creation
 ### What did the exploratory analysis find and how did you add additional features?
-For additional features I divided the datetime in month, day, year and hour. 
+From plotting histograms at the EDA step, I deduced that :
 
+some features were binary such as [holiday, working day]
+some features were nearly normally distributed such as [temp, atemp, humidity, windspeed]
+some features were categorical such as [season, weather] it also seemed that although the data was nearly uniformly distributed among the 4 seasons, most of the data had a certain weather category (1).
+The data was nearly uniformly distributed in a monthly fashion through the years 2011, 2012 where the first 19 days of each month were used for training and the rest were used for testing and the data was recorded in different hours throughout the day.
+I followed the notebook suggestion of adding the hour feature to the data which seemed reasonable since it is a more general feature and might give the trained models more intuition to which hours of the day in general might have the largest bike share demand without specifying a certain year, month or day.
+ 
 ### How much better did your model preform after adding additional features and why do you think that is?
 The best improvement was because of the split of the datetime field into year, month, day, and hour.
 
